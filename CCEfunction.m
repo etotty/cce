@@ -15,7 +15,7 @@
 %	(M<N) (i.e., grouping each county into a specific state). This is used for
 %	removing group rather than unit trends. Set S=0 if no grouping is
 %	necessary
-% demean = indicator for whether data should be demeaned first, to remove two-way fixed effects 
+% demean = indicator for whether data should be demeaned first, to remove fixed effects 
 %	(0-no demeaning, 1-remove time FE, 2-remove unit FE, 3-remove both)
 % mgfe = indicator for whether unit-specific regressions should include an intercept (1-yes, 0-no)
 
