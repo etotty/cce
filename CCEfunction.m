@@ -48,6 +48,12 @@ elseif demean==2
 elseif demean==3
     [Xdot,Ydot]=DemeanData(Xdet,Ydet);
 end
+if mgfe==1
+    [Xmg,Ymg]=TimeDemean(Xdet,Ydet,1);
+elseif mgfe==0
+    Xmg=Xdet;
+    Ymg=Ydet;
+end
 X=Xdot;
 Y=Ydot;
 
@@ -81,9 +87,9 @@ betaCCEi=zeros(p,N);
 for i=1:N
     Xi=zeros(T,p);
     for j=1:p
-        Xi(:,j)=Xdet(:,i,j); % Note - always sends the non-demeaned data into the heterogeneous estimator
+        Xi(:,j)=Xmg(:,i,j); % Note - always sends the non-demeaned data into the heterogeneous estimator
     end
-    Yi=Ydet(:,i);
+    Yi=Ymg(:,i);
     betaCCEi(:,i)=inv(Xi'*Mmg*Xi)*Xi'*Mmg*Yi;
 end
 betaCCEmg=mean(betaCCEi,2);
